@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        {% if request.GET.category %}
+        <li class="breadcrumb-item"><a href="{% url 'posts' %}">所有新闻</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{request.GET.category}}</li>
+        {% else %}
+        <li class="breadcrumb-item active" aria-current="page">所有新闻</li>
+        {% endif %}
+    </ol>
+</nav>
+<ul class="list-group list-group-flush">
+    {% for post in posts %}
+    <li class="list-group-item"><a href="{% url 'post' post.id %}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+<br>
+<nav aria-label="...">
+    <ul class="pagination">
+        {% if not page_obj.has_previous %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">Previous</a>
+        </li>
+        {% endif %}
+        <li class="page-item active">
+            <a class="page-link" href="#">{{page_obj.number}}<span class="sr-only">(current)</span></a>
+        </li>
+        {% if not page_obj.has_next %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Next</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{page_obj.next_page_number}}" tabindex="-1">Next</a>
+        </li>
+        {% endif %}
+        <li class="page-item disabled">
+            <a href="" class="page-link">共{{page_obj.paginator.num_pages}}页</a>
+        </li>
+    </ul>
+</nav>
+{% endblock %}

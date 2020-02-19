@@ -1,0 +1,7 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>{{ post.title }}<span class="badge badge-secondary">{{post.category}}</span></h1>
+<h3>{{post.timestamp}}</h3>
+<p>{{ post.content|safe }}</p>
+{% endblock %}

@@ -1,0 +1,8 @@
+# environment
+/venv/
+
+# ide
+.idea/
+
+# cache
+__pycache__/

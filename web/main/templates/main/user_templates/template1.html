@@ -1,0 +1,14 @@
+<h1>{{ post.title }}<span class="badge badge-secondary">{{post.category}}</span></h1>
+<h3>{{post.timestamp}}</h3>
+<p>{{ post.content|safe }}</p>
+<style>
+    h1 {}
+    p {
+        color: blue;
+        font-size: 30px;
+        border: 3px solid black;
+    }
+    body {
+        background-color: lightyellow;
+    }
+</style>
