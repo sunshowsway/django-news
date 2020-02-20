@@ -13,6 +13,8 @@ Python Django新闻网站
     $ pip install -r requirements.txt
     $ python web/manage.py runserver
 
+管理员用户 admin 密码 admin
+
 爬取
 ---
     $ cd scrape
